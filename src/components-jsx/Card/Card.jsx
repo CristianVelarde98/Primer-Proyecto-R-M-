@@ -1,12 +1,15 @@
 import style from "./Card.module.css";
 
-export default function Card({ name, gender, species, image }) {
+export default function Card(props) {
+  const { name, gender, species, image, eliminar, id } = props;
   return (
     <div className={style.contenedor}>
       <div className={style.carta}>
         <button
           className={style.boton}
-          onClick={() => window.alert("Emulamos que se cierra la card")}
+          onClick={() => {
+            eliminar(id);
+          }}
         >
           X
         </button>

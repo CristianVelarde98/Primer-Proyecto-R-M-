@@ -6,14 +6,16 @@ export default function Cards(props) {
   return (
     <div className={style.cartas}>
       {characters.map((personaje, index) => {
-        const { name, gender, species, image } = personaje;
+        const { name, gender, species, image, id } = personaje;
         return (
           <Card
+            id={id}
             key={index}
             name={name}
             species={species}
             gender={gender}
             image={image}
+            eliminar={props.eliminar}
           />
         );
       })}

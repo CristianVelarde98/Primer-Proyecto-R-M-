@@ -4,14 +4,11 @@ import Cards from "./components-jsx/Cards/Cards.jsx";
 import React, { useState } from "react";
 
 function App() {
-  const example = {
-    name: "Morty Smith",
-    species: "Human",
-    gender: "Male",
-    image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-  };
+  const [characters, setCharacters] = useState([]);
 
-  const [characters, setCharacters] = useState([example]);
+  const eliminar = (id) => {
+    setCharacters(characters.filter((characters) => id != characters.id));
+  };
 
   const onSearch = (character) => {
     fetch(`https://rickandmortyapi.com/api/character/${character}`)
@@ -28,9 +25,8 @@ function App() {
   return (
     <div className="App" style={{ padding: "25px" }}>
       <Nav onSearch={(id) => onSearch(id)} />
-      <div className="cartasCon">
-        <Cards characters={characters} />
-      </div>
+
+      <Cards characters={characters} eliminar={eliminar} />
     </div>
   );
 }
