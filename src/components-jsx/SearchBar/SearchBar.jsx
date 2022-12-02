@@ -1,10 +1,20 @@
+import { useState } from "react";
+
 export default function SearchBar(props) {
+  const [personaje, setPersonaje] = useState();
+  let nombre = "";
+
   return (
     <div>
-      <input type="search" />
+      <input
+        type="search"
+        onChange={(datoN) => {
+          nombre = datoN.target.value;
+        }}
+      />
       <button
         onClick={() => {
-          props.onSearch(5);
+          props.onSearch(nombre);
         }}
       >
         Agregar
